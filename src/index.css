@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base: #080c10;
+  --bg-panel: #0d1219;
+  --bg-card: #111820;
+  --bg-row-alt: #0f1621;
+  --border: #1e2d3d;
+  --border-bright: #2a3f55;
+  --text-primary: #e2eaf4;
+  --text-secondary: #7a9ab8;
+  --text-muted: #3a5572;
+  --cyan: #00d4ff;
+  --cyan-dim: #0099bb;
+  --cyan-glow: rgba(0, 212, 255, 0.15);
+  --green: #00e676;
+  --amber: #ffab00;
+  --red: #ff4444;
+  --purple: #b06cff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'Sora', ui-sans-serif, system-ui;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Scanline overlay on navbar */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+}
+
+/* Glow effects */
+.glow-cyan { box-shadow: 0 0 20px var(--cyan-glow); }
+.text-glow-cyan { text-shadow: 0 0 12px rgba(0, 212, 255, 0.6); }
+
+/* Animated border for active nav item */
+@keyframes pulse-line {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Table row hover */
+.table-row-hover:hover {
+  background: rgba(0, 212, 255, 0.04);
+  transition: background 0.15s;
+}
+
+/* Fade in */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeInUp 0.3s ease both; }
+
+/* Status badge pulse for pending */
+@keyframes badge-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+.badge-pulse { animation: badge-pulse 2s ease infinite; }
